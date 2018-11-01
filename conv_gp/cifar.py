@@ -2,11 +2,11 @@ import numpy as np
 import tensorflow as tf
 import gpflow
 import observations
-import utils
+import conv_gp.utils
 from gpflow import settings
 from sklearn import preprocessing
-from arguments import default_parser, train_steps
-from experiment import Experiment
+from conv_gp.arguments import default_parser, train_steps
+from conv_gp.experiment import Experiment
 
 class Cifar(Experiment):
     def _load_data(self):

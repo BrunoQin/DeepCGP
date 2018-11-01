@@ -3,10 +3,10 @@ import numpy as np
 import tensorflow as tf
 import gpflow
 import observations
-import utils
+from . import utils
 from gpflow import settings
 from gpflow.actions import Loop
-from models import ModelBuilder
+from conv_gp.models import ModelBuilder
 
 float_type = settings.float_type
 

@@ -3,12 +3,12 @@ import numpy as np
 import tensorflow as tf
 import gpflow
 import observations
-import utils
+import conv_gp.utils
 from sklearn import preprocessing
 from gpflow import settings
 from gpflow.actions import Loop
-from arguments import default_parser, train_steps
-from experiment import Experiment
+from conv_gp.arguments import default_parser, train_steps
+from conv_gp.experiment import Experiment
 
 class MNIST(Experiment):
     def _load_data(self):

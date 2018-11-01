@@ -4,8 +4,8 @@ import gpflow
 from gpflow import settings, features, transforms
 from gpflow.kullback_leiblers import gauss_kl
 from doubly_stochastic_dgp.layers import Layer
-from conditionals import conditional
-from views import FullView
+from conv_gp.conditionals import conditional
+from conv_gp.views import FullView
 
 float_type = settings.float_type
 

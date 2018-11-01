@@ -5,7 +5,7 @@ import gpflow
 from gpflow import settings
 import math
 from doubly_stochastic_dgp.layers import SVGP_Layer
-from layers import ConvLayer
+from conv_gp.layers import ConvLayer
 from .log import LogBase
 
 class TensorBoardTask(object):
