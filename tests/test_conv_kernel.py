@@ -5,7 +5,6 @@ from gpflow import settings
 from gpflow.test_util import GPflowTestCase
 from .context import conv_gp
 from conv_gp.layers import MultiOutputConvKernel
-from conv_gp.kernels import PatchInducingFeature
 
 class TestMultiOutputConvKernel(GPflowTestCase):
     def setUp(self):

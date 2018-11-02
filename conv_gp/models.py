@@ -5,10 +5,10 @@ from gpflow import settings, kernels, features
 
 from doubly_stochastic_dgp.dgp import DGP_Base
 from doubly_stochastic_dgp.layers import SVGP_Layer
-from conv_gp.kernels import ConvKernel, PatchInducingFeatures, AdditivePatchKernel
-from conv_gp.layers import ConvLayer
-from conv_gp.views import FullView, RandomPartialView
-from conv_gp.mean_functions import Conv2dMean, IdentityConv2dMean
+from kernels import ConvKernel, PatchInducingFeatures, AdditivePatchKernel
+from layers import ConvLayer
+from views import FullView, RandomPartialView
+from mean_functions import Conv2dMean, IdentityConv2dMean
 from sklearn import cluster
 
 def parse_ints(int_string):
@@ -64,7 +64,7 @@ class ModelBuilder(object):
 
         X = self.X_train.reshape(-1, np.prod(self.X_train.shape[1:]))
         return DGP_Base(X, self.Y_train,
-                likelihood=gpflow.likelihoods.Gaussian(10),
+                likelihood=gpflow.likelihoods.Gaussian(),
                 num_samples=self.flags.num_samples,
                 layers=layers,
                 minibatch_size=self.flags.batch_size, name='DGP')
@@ -190,7 +190,7 @@ class ModelBuilder(object):
             else:
                 raise ValueError("Invalid last layer kernel")
         return SVGP_Layer(kern=kernel,
-                    num_outputs=10,
+                    num_outputs=1,
                     feature=inducing,
                     mean_function=gpflow.mean_functions.Zero(output_dim=10),
                     white=self.flags.white,
