@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 import gpflow
 import observations
-import conv_gp.utils
+from . import utils
 from sklearn import preprocessing
 from gpflow import settings
 from gpflow.actions import Loop
