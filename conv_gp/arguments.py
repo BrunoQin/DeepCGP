@@ -24,7 +24,7 @@ def default_parser():
     parser.add_argument('--optimizer', type=str, default='Adam',
             help="Either Adam or NatGrad")
 
-    parser.add_argument('-M', type=str, default='3,3',
+    parser.add_argument('-M', type=str, default='384,384',
             help="How many inducing points to use at each layer.")
     parser.add_argument('--feature-maps', type=str, default='16')
     parser.add_argument('--filter-sizes', type=str, default='3,3')
