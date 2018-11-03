@@ -64,7 +64,7 @@ class ModelBuilder(object):
 
         X = self.X_train.reshape(-1, np.prod(self.X_train.shape[1:]))
         return DGP_Base(X, self.Y_train,
-                likelihood=gpflow.likelihoods.MultiClass(10),
+                likelihood=gpflow.likelihoods.Gaussian(),
                 num_samples=self.flags.num_samples,
                 layers=layers,
                 minibatch_size=self.flags.batch_size, name='DGP')
@@ -190,7 +190,7 @@ class ModelBuilder(object):
             else:
                 raise ValueError("Invalid last layer kernel")
         return SVGP_Layer(kern=kernel,
-                    num_outputs=10,
+                    num_outputs=1,
                     feature=inducing,
                     mean_function=gpflow.mean_functions.Zero(output_dim=10),
                     white=self.flags.white,

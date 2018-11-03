@@ -12,7 +12,7 @@ def default_parser():
             help="What to call the experiment. Determines the directory where results are dumped.")
     parser.add_argument('--lr-decay-steps', type=int, default=100000,
             help="The program uses exponential learning rate decay with 0.1 decay every lr-decay-steps.")
-    parser.add_argument('--test-every', type=int, default=1000,
+    parser.add_argument('--test-every', type=int, default=50,
             help="How often to evaluate the test accuracy. Unit optimization iterations.")
     parser.add_argument('--test-size', type=int, default=188)
     parser.add_argument('--num-samples', type=int, default=10)
@@ -24,10 +24,10 @@ def default_parser():
     parser.add_argument('--optimizer', type=str, default='Adam',
             help="Either Adam or NatGrad")
 
-    parser.add_argument('-M', type=str, default='384,384',
+    parser.add_argument('-M', type=str, default='384,384,384',
             help="How many inducing points to use at each layer.")
-    parser.add_argument('--feature-maps', type=str, default='16')
-    parser.add_argument('--filter-sizes', type=str, default='3,3')
+    parser.add_argument('--feature-maps', type=str, default='16,32')
+    parser.add_argument('--filter-sizes', type=str, default='5,5,3')
     parser.add_argument('--strides', type=str, default='1,1')
     parser.add_argument('--base-kernel', type=str, default='rbf')
     parser.add_argument('--white', action='store_true', default=False)
