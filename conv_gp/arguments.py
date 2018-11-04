@@ -13,9 +13,9 @@ def default_parser():
     parser.add_argument('--lr-decay-steps', type=int, default=100000,
             help="The program uses exponential learning rate decay with 0.1 decay every lr-decay-steps.")
 
-    parser.add_argument('--test-every', type=int, default=50,
+    parser.add_argument('--test-every', type=int, default=100,
             help="How often to evaluate the test accuracy. Unit optimization iterations.")
-    parser.add_argument('--test-size', type=int, default=10000)
+    parser.add_argument('--test-size', type=int, default=188)
     parser.add_argument('--num-samples', type=int, default=10)
     parser.add_argument('--log-dir', type=str, default='results',
             help="Directory to write the results to.")

@@ -9,10 +9,10 @@ from experiment import Experiment
 def load_ocean():
     # read data
     with gzip.open('OCEAN_data/redata.pkl.gz') as fp:
-        redata = np.array(pickle.load(fp)).astype(float)
+        redata = np.array(pickle.load(fp)).astype(np.float64)
 
     with gzip.open('OCEAN_data/nino.pkl.gz') as fp:
-        nino = np.array(pickle.load(fp)).astype(float)
+        nino = np.array(pickle.load(fp)).astype(np.float64)
 
     X = redata[0:4600]
     Y = nino[11:4611]
