@@ -111,3 +111,4 @@ checkpoint
 model.ckpt*
 
 *.pkl.gz
+conv_gp/results/*
