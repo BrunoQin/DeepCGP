@@ -20,23 +20,23 @@ def default_parser():
     parser.add_argument('--log-dir', type=str, default='results',
             help="Directory to write the results to.")
     parser.add_argument('--lr', type=float, default=0.01)
-    parser.add_argument('--batch-size', type=int, default=32,
+    parser.add_argument('--batch-size', type=int, default=16,
             help="Minibatch size to use in optimization.")
     parser.add_argument('--optimizer', type=str, default='Adam',
             help="Either Adam or NatGrad")
 
-    parser.add_argument('-M', type=str, default='384,384,384',
-            help="How many inducing points to use at each layer.")
-    parser.add_argument('--feature-maps', type=str, default='16,32')
-    parser.add_argument('--filter-sizes', type=str, default='5,5,3')
-    parser.add_argument('--strides', type=str, default='2,2,1')
+    parser.add_argument('-M', type=str, default='40,40',
+                        help="How many inducing points to use at each layer.")
+    parser.add_argument('--feature-maps', type=str, default='10')
+    parser.add_argument('--filter-sizes', type=str, default='5,3')
+    parser.add_argument('--strides', type=str, default='2,1')
     parser.add_argument('--base-kernel', type=str, default='rbf')
     parser.add_argument('--white', action='store_true', default=False)
 
     parser.add_argument('--last-kernel', type=str, default='conv')
 
     parser.add_argument('--gamma', type=float, default=0.001,
-            help="Gamma parameter to start with for natgrad.")
+                        help="Gamma parameter to start with for natgrad.")
 
     parser.add_argument('--identity-mean', action='store_true')
 

@@ -192,7 +192,7 @@ class ModelBuilder(object):
         return SVGP_Layer(kern=kernel,
                     num_outputs=1,
                     feature=inducing,
-                    mean_function=gpflow.mean_functions.Zero(output_dim=10),
+                    mean_function=gpflow.mean_functions.Zero(output_dim=1),
                     white=self.flags.white,
                     q_mu=q_mu,
                     q_sqrt=q_sqrt)

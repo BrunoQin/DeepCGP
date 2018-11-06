@@ -66,7 +66,7 @@ class AccuracyLogger(Logger):
             # probabilities = mean_samples.mean(axis=0)
             # predicted_class = probabilities.argmax(axis=1)[:, None]
             # correct += (predicted_class == Y).sum()
-            pY, pYv = model.predict_y(X)
+            pY, pYv = model.predict_y(X, 1)
             rmse = np.mean((pY - Y) ** 2.0) ** 0.5
             nlpp = -np.mean(-0.5 * np.log(2 * np.pi * pYv) - 0.5 * (Y - pY) ** 2.0 / pYv)
         # return correct / self.Y_test.size

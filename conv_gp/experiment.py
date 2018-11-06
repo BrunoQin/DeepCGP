@@ -32,7 +32,7 @@ class Experiment(object):
 
     def _log_step(self):
         entry = self.log.write_entry(self.model)
-        self.tensorboard_log.write_entry(self.model)
+        # self.tensorboard_log.write_entry(self.model)
         print(entry)
 
     def _optimize(self, retry=0, error=None):

@@ -1,10 +1,12 @@
 import numpy as np
 import gzip
 import pickle
+import scipy.ndimage
 from sklearn import preprocessing
 from gpflow import settings
 from arguments import default_parser, train_steps
 from experiment import Experiment
+
 
 def load_ocean():
     # read data
@@ -14,9 +16,18 @@ def load_ocean():
     with gzip.open('OCEAN_data/nino.pkl.gz') as fp:
         nino = np.array(pickle.load(fp)).astype(np.float64)
 
-    X = redata[0:4600]
+    ALL = None
+    for i in redata:
+        i.reshape(150, 160)
+        i = scipy.ndimage.zoom(i.reshape(150, 160), 0.2)
+        i = i.reshape(1, 960)
+        if ALL is None:
+            ALL = i
+        else:
+            ALL = np.vstack((ALL, i))
+    X = ALL[0:4600]
     Y = nino[11:4611]
-    Xt = redata[4601:4789]
+    Xt = ALL[4601:4789]
     Yt = nino[4612:4800]
     return X, Y, Xt, Yt
 
@@ -43,8 +54,8 @@ class Ocean(Experiment):
         self.X_transform = preprocessing.StandardScaler()
         self.X_train = self.X_transform.fit_transform(self.X_train).astype(settings.float_type)
         self.X_test = self.X_transform.transform(self.X_test).astype(settings.float_type)
-        self.X_train = self.X_train.reshape(-1, 150, 160, 1)
-        self.X_test = self.X_test.reshape(-1, 150, 160, 1)
+        self.X_train = self.X_train.reshape(-1, 30, 32, 1)
+        self.X_test = self.X_test.reshape(-1, 30, 32, 1)
 
 def read_args():
     parser = default_parser()
